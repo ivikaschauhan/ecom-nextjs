@@ -15,8 +15,8 @@ export default function ProductsList({
   const [cartProducts, setCartProducts] = useState(initialCartProducts);
 
   async function addToCart(productId: string) {
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_SITE_URL + "/api/users/1/cart",
+   
+      const response = await fetch("/api/users/1/cart", 
       {
         method: "POST",
         body: JSON.stringify({ productId }),
@@ -29,8 +29,7 @@ export default function ProductsList({
     setCartProducts(updatedCartProducts);
   }
   async function removeFromCart(productId: string) {
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_SITE_URL + "/api/users/1/cart",
+    const response = await fetch("/api/users/1/cart", 
       {
         method: "DELETE",
         body: JSON.stringify({ productId }),

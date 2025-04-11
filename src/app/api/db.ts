@@ -4,6 +4,7 @@ import { MongoClient,Db, ServerApiVersion } from 'mongodb' ;
 let cachedClient: MongoClient | null = null;
 let cachedDb: Db|null = null;
 
+export const dynamic = "force-dynamic";
 export async function connectToDB(){
 if(cachedClient && cachedDb){
     return {client: cachedClient, db: cachedDb};

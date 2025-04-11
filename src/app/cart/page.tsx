@@ -1,7 +1,8 @@
-export const dynamic = "force-dynamic";
+
 import ShoppingCartList from "./shoppingCartList";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
 export default async function CartPage() {
   const response = await fetch(
     process.env.NEXT_PUBLIC_SITE_URL + "/api/users/1/cart",

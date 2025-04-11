@@ -1,26 +1,20 @@
-import { NextRequest } from 'next/server';
-import { connectToDB } from '../../db';
+import { NextRequest, NextResponse } from 'next/server';
+import { connectToDB } from '@/app/api/db'; 
+
+export const dynamic = "force-dynamic";
 
 export async function GET(
   request: NextRequest,
   context: { params: { id: string } }
 ) {
+  const { id } = context.params;
+
   const { db } = await connectToDB();
-
-  const productId = context.params.id;
-
-  const product = await db.collection('products').findOne({ id: productId });
+  const product = await db.collection('products').findOne({ id });
 
   if (!product) {
-    return new Response("Product not found", {
-      status: 404,
-    });
+    return new NextResponse('Product not found', { status: 404 });
   }
 
-  return new Response(JSON.stringify(product), {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  return NextResponse.json(product);
 }

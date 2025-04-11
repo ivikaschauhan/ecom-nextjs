@@ -9,7 +9,7 @@ import { connectToDB } from '@/app/api/db';
 //   '2': ['345', '456'],
 //   '3': ['234'],
 // }
-
+export const dynamic = "force-dynamic";
 type Params = {
   id: string;
 }
